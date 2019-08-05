@@ -48,8 +48,9 @@ namespace rplidar_ros
 class RPlidarNode : public rclcpp::Node
 {
 public:
-  RPlidarNode(const std::string & name = "rplidar_node",
-              const rclcpp::NodeOptions & options = rclcpp::NodeOptions());
+  RPlidarNode(
+    const std::string & name = "rplidar_node",
+    const rclcpp::NodeOptions & options = rclcpp::NodeOptions());
 
   void publish_scan();
 
@@ -57,20 +58,22 @@ public:
 
   bool check_health();
 
-  bool stop_motor(const std::shared_ptr<rmw_request_id_t> request_header,
-                  std_srvs::srv::Empty::Request::SharedPtr request,
-                  std_srvs::srv::Empty::Response::SharedPtr response);
+  void stop_motor(
+    const std::shared_ptr<rmw_request_id_t> request_header,
+    std_srvs::srv::Empty::Request::SharedPtr request,
+    std_srvs::srv::Empty::Response::SharedPtr response);
 
-  bool start_motor(const std::shared_ptr<rmw_request_id_t> request_header,
-                   std_srvs::srv::Empty::Request::SharedPtr request,
-                   std_srvs::srv::Empty::Response::SharedPtr response);
+  void start_motor(
+    const std::shared_ptr<rmw_request_id_t> request_header,
+    std_srvs::srv::Empty::Request::SharedPtr request,
+    std_srvs::srv::Empty::Response::SharedPtr response);
 
-  float get_angle(const rplidar_response_measurement_node_hq_t& node);
+  float get_angle(const rplidar_response_measurement_node_hq_t & node);
 
   void spin();
 
 private:
-  std::unique_ptr<rp::standalone::rplidar::RPlidarDriver> drv;
+  std::unique_ptr<rp::standalone::rplidar::RPlidarDriver> driver_;
 };
 
 }  // namespace rplidar_ros

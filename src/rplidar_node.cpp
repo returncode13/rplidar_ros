@@ -34,13 +34,47 @@
 
 #include "rplidar_ros/rplidar_node.hpp"
 
+#ifndef _countof
+#define _countof(_Array) (int)(sizeof(_Array) / sizeof(_Array[0]))
+#endif
+
+#define DEG2RAD(x) ((x)*M_PI/180.)
+
 namespace rplidar_ros
 {
 
 RPlidarNode::RPlidarNode(const std::string & name, const rclcpp::NodeOptions & options)
-: rclcpp::Node(name, options), drv(nullptr)
-  {
-  }
+: rclcpp::Node(name, options), driver_(nullptr)
+{
+
+}
+
+void RPlidarNode::start_motor(
+    const std::shared_ptr<rmw_request_id_t> request_header,
+    std_srvs::srv::Empty::Request::SharedPtr request,
+    std_srvs::srv::Empty::Response::SharedPtr response) {
+  (void)request_header;
+  (void)request;
+  (void)response;
+
+  RCLCPP_INFO(get_logger(), "Start motor");
+  driver_->startMotor();
+  driver_->startScan(false, true);
+}
+
+void RPlidarNode::stop_motor(
+    const std::shared_ptr<rmw_request_id_t> request_header,
+    std_srvs::srv::Empty::Request::SharedPtr request,
+    std_srvs::srv::Empty::Response::SharedPtr response) {
+  (void)request_header;
+  (void)request;
+  (void)response;
+
+  RCLCPP_INFO(get_logger(), "Stop motor");
+  driver_->stop();
+  driver_->stopMotor();
+
+}
 
 }  // namespace rplidar_ros
 
