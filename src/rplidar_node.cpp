@@ -46,7 +46,28 @@ namespace rplidar_ros
 RPlidarNode::RPlidarNode(const std::string & name, const rclcpp::NodeOptions & options)
 : rclcpp::Node(name, options), driver_(nullptr)
 {
+  std::string channel_type = "serial";
+  std::string tcp_ip = "192.168.0.7";
+  std::string serial_port = "/dev/ttyUSB0";
+  int tcp_port = 20108;
+  int serial_baudrate = 115200;  // ros2 run for A1 A2, change to 256000 if A3
+  std::string frame_id = "laser_frame";
+  bool inverted = false;
+  bool angle_compensate = true;
+  std::string scan_mode;
 
+  declare_parameter<std::string>("channel_type", channel_type);
+  declare_parameter<std::string>("tcp_ip", tcp_ip);
+  declare_parameter<int>("tcp_port", tcp_port);
+  declare_parameter<std::string>("serial_port", serial_port);
+  declare_parameter<int>("serial_baudrate", serial_baudrate);
+  declare_parameter<std::string>("frame_id", frame_id);
+  declare_parameter<bool>("inverted", inverted);
+  declare_parameter<bool>("angle_compensate", angle_compensate);
+  declare_parameter<std::string>("scan_mode", scan_mode);
+
+  float max_distance = 8.0;
+  int angle_compensate_multiple = 1;  // it stand of angle compensate at per 1 degree
 }
 
 void RPlidarNode::start_motor(
