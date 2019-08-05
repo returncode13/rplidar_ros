@@ -16,21 +16,17 @@ FILE(GLOB RPLIDAR_SDK_SRC
 )
 
 include_directories(
-  ${RPLIDAR_SDK_PATH}/include
+    ${RPLIDAR_SDK_PATH}/include
+    ${RPLIDAR_SDK_PATH}/src
   include
 )
 
-add_executable(rplidarNode src/node.cpp ${RPLIDAR_SDK_SRC})
-ament_target_dependencies(rplidarNode
+add_executable(rplidar_node src/rplidar_node.cpp ${RPLIDAR_SDK_SRC})
+ament_target_dependencies(rplidar_node
   "rclcpp"
   "common_interfaces")
 
-add_executable(rplidarNodeClient src/client.cpp)
-ament_target_dependencies(rplidarNodeClient
-  "rclcpp"
-  "common_interfaces")
-
-install(TARGETS rplidarNode rplidarNodeClient
+install(TARGETS rplidar_node
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY
