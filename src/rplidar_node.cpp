@@ -38,7 +38,7 @@
 #define _countof(_Array) (int)(sizeof(_Array) / sizeof(_Array[0]))
 #endif
 
-#define DEG2RAD(x) ((x)*M_PI/180.)
+#define DEG2RAD(x) ((x) * M_PI / 180.)
 
 namespace rplidar_ros
 {
@@ -68,12 +68,70 @@ RPlidarNode::RPlidarNode(const std::string & name, const rclcpp::NodeOptions & o
 
   float max_distance = 8.0;
   int angle_compensate_multiple = 1;  // it stand of angle compensate at per 1 degree
+
+  RCLCPP_INFO(get_logger(),
+    "RPLIDAR running on ROS 2 package rplidar_ros. SDK Version:" RPLIDAR_SDK_VERSION "");
+
+  // create the driver instance
+  if (channel_type == "tcp") {
+    driver_.reset(rp::standalone::rplidar::RPlidarDriver::CreateDriver(
+        rp::standalone::rplidar::DRIVER_TYPE_TCP));
+  } else {
+    driver_.reset(rp::standalone::rplidar::RPlidarDriver::CreateDriver(
+        rp::standalone::rplidar::DRIVER_TYPE_SERIALPORT));
+  }
+
+}
+
+bool RPlidarNode::get_device_info()
+{
+  u_result result;
+  rplidar_response_device_info_t dev_info;
+
+  result = driver_->getDeviceInfo(dev_info);
+  if (IS_FAIL(result)) {
+    if (result == RESULT_OPERATION_TIMEOUT) {
+      RCLCPP_ERROR(get_logger(), "Operation time out. RESULT_OPERATION_TIMEOUT!");
+    } else {
+      RCLCPP_ERROR(get_logger(), "Unexpected error, code: %x", result);
+    }
+    return false;
+  }
+
+  RCLCPP_INFO(get_logger(), "Firmware Ver: %d.%02d",
+              dev_info.firmware_version >> 8, dev_info.firmware_version & 0xFF);
+  RCLCPP_INFO(get_logger(), "Hardware Rev: %d",
+    (int)dev_info.hardware_version);
+  return true;
+}
+
+bool RPlidarNode::check_health()
+{
+  u_result result;
+  rplidar_response_device_health_t health_info;
+
+  result = driver_->getHealth(health_info);
+  if (IS_OK(result)) {
+    RCLCPP_INFO(get_logger(), "RPLidar health status: %d", health_info.status);
+    if (health_info.status == RPLIDAR_STATUS_ERROR) {
+      RCLCPP_ERROR(
+        get_logger(), "RPlidar internal error detected. Please reboot the device to retry.");
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    RCLCPP_ERROR(get_logger(), "Cannot retrieve rplidar health code: %x",
+                 result);
+    return false;
+  }
 }
 
 void RPlidarNode::start_motor(
-    const std::shared_ptr<rmw_request_id_t> request_header,
-    std_srvs::srv::Empty::Request::SharedPtr request,
-    std_srvs::srv::Empty::Response::SharedPtr response) {
+  const std::shared_ptr<rmw_request_id_t> request_header,
+  std_srvs::srv::Empty::Request::SharedPtr request,
+  std_srvs::srv::Empty::Response::SharedPtr response)
+{
   (void)request_header;
   (void)request;
   (void)response;
@@ -84,9 +142,10 @@ void RPlidarNode::start_motor(
 }
 
 void RPlidarNode::stop_motor(
-    const std::shared_ptr<rmw_request_id_t> request_header,
-    std_srvs::srv::Empty::Request::SharedPtr request,
-    std_srvs::srv::Empty::Response::SharedPtr response) {
+  const std::shared_ptr<rmw_request_id_t> request_header,
+  std_srvs::srv::Empty::Request::SharedPtr request,
+  std_srvs::srv::Empty::Response::SharedPtr response)
+{
   (void)request_header;
   (void)request;
   (void)response;
