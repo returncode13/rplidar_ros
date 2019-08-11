@@ -22,7 +22,7 @@ How to run rplidar ros package
 =====================================================================
 
 ```
-$ rosrun rplidar_ros rplidar_node  # for RPLIDAR A1/A2
+$ ros2 run rplidar_ros rplidar_node  # for RPLIDAR A1/A2
 $ rviz2
 ```
 
