@@ -34,6 +34,7 @@
 
 #include <chrono>
 #include <cmath>
+#include <iostream>
 #include "rplidar_ros/rplidar_node.hpp"
 
 #ifndef _countof
@@ -81,6 +82,7 @@ RPlidarNode::RPlidarNode(const std::string & name, const rclcpp::NodeOptions & o
   timer_ = create_wall_timer(182ms, std::bind(&RPlidarNode::spin, this));  // 5.5Hz
 
   connect_driver();
+  check_scan_mode();
 }
 
 RPlidarNode::~RPlidarNode()
@@ -346,6 +348,8 @@ void RPlidarNode::spin()
       // All the data is invalid, just publish them
       publish_scan(nodes, count, start_scan_time, scan_duration, angle_min, angle_max);
     }
+  } else {
+    RCLCPP_WARN(get_logger(), "Cannot grab scan data");
   }
 }
 
@@ -410,8 +414,13 @@ void RPlidarNode::publish_scan(
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
-  auto node = std::make_shared<rplidar_ros::RPlidarNode>();
-  rclcpp::spin(node);
-  rclcpp::shutdown();
+  try {
+    auto node = std::make_shared<rplidar_ros::RPlidarNode>();
+    rclcpp::spin(node);
+    rclcpp::shutdown();
+  } catch (const std::runtime_error & error) {
+    std::cerr << error.what() << std::endl;
+    return -1;
+  }
   return 0;
 }
