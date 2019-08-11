@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(common_interfaces REQUIRED)
+find_package(sensor_msgs REQUIRED)
 
 set(RPLIDAR_SDK_PATH "./sdk/")
 
@@ -24,7 +24,7 @@ include_directories(
 add_executable(rplidar_node src/rplidar_node.cpp ${RPLIDAR_SDK_SRC})
 ament_target_dependencies(rplidar_node
   "rclcpp"
-  "common_interfaces")
+  "sensor_msgs")
 
 install(TARGETS rplidar_node
   DESTINATION lib/${PROJECT_NAME})
