@@ -113,7 +113,8 @@ private:
 
   void publish_scan(
     rplidar_response_measurement_node_hq_t * nodes,
-    size_t node_count);
+    size_t node_count, rclcpp::Time & start, double scan_time,
+    float angle_min, float angle_max);
 };
 
 }  // namespace rplidar_ros

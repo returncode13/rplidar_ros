@@ -279,20 +279,76 @@ float RPlidarNode::get_angle(
 
 void RPlidarNode::spin()
 {
+  rplidar_response_measurement_node_hq_t nodes[360 * 8];
+  size_t count = _countof(nodes);
+
+  rclcpp::Time start_scan_time = clock_.now();
+  u_result op_result = driver_->grabScanDataHq(nodes, count);
+  rclcpp::Time end_scan_time = clock_.now();
+  double scan_duration = end_scan_time.seconds() - start_scan_time.seconds();
+
+  if (op_result == RESULT_OK) {
+    op_result = driver_->ascendScanData(nodes, count);
+    float angle_min = DEG2RAD(0.0f);
+    float angle_max = DEG2RAD(359.0f);
+
+    if (op_result == RESULT_OK) {
+      if (angle_compensate_) {
+        //const int angle_compensate_multiple = 1;
+        const int angle_compensate_nodes_count = 360 * angle_compensate_multiple_;
+        int angle_compensate_offset = 0;
+        rplidar_response_measurement_node_hq_t angle_compensate_nodes[angle_compensate_nodes_count];
+        memset(angle_compensate_nodes, 0,
+          angle_compensate_nodes_count * sizeof(rplidar_response_measurement_node_hq_t));
+
+        for (int i = 0; i < count; i++) {
+          if (nodes[i].dist_mm_q2 != 0) {
+            float angle = get_angle(nodes[i]);
+            int angle_value = (int)(angle * angle_compensate_multiple_);
+            if ((angle_value - angle_compensate_offset) < 0) {
+              angle_compensate_offset = angle_value;
+            }
+            for (int j = 0; j < angle_compensate_multiple_; j++) {
+              angle_compensate_nodes[angle_value - angle_compensate_offset + j] = nodes[i];
+            }
+          }
+        }
+
+        publish_scan(angle_compensate_nodes, angle_compensate_nodes_count,
+          start_scan_time, scan_duration, angle_min, angle_max);
+      } else {
+        int start_node = 0;
+        int end_node = 0;
+        int i = 0;
+        // find the first valid node and last valid node
+        while (nodes[i++].dist_mm_q2 == 0) {}
+        start_node = i - 1;
+        i = count - 1;
+        while (nodes[i--].dist_mm_q2 == 0) {}
+        end_node = i + 1;
+
+        angle_min = DEG2RAD(get_angle(nodes[start_node]));
+        angle_max = DEG2RAD(get_angle(nodes[end_node]));
+
+        publish_scan(&nodes[start_node], end_node - start_node + 1,
+          start_scan_time, scan_duration, angle_min, angle_max);
+      }
+    } else if (op_result == RESULT_OPERATION_FAIL) {
+      // All the data is invalid, just publish them
+      publish_scan(nodes, count, start_scan_time, scan_duration, angle_min, angle_max);
+    }
+  }
 }
 
 void RPlidarNode::publish_scan(
   rplidar_response_measurement_node_hq_t * nodes,
-  size_t node_count)
+  size_t node_count, rclcpp::Time & start, double scan_time,
+  float angle_min, float angle_max)
 {
-  float angle_min = DEG2RAD(0.0f);
-  float angle_max = DEG2RAD(359.0f);
-
   static int scan_count = 0;
   sensor_msgs::msg::LaserScan scan_msg;
 
-  rclcpp::Time now = clock_.now();
-  scan_msg.header.stamp = now;
+  scan_msg.header.stamp = start;
   scan_msg.header.frame_id = frame_id_;
   scan_count++;
 
@@ -307,7 +363,6 @@ void RPlidarNode::publish_scan(
   scan_msg.angle_increment =
     (scan_msg.angle_max - scan_msg.angle_min) / (double)(node_count - 1);
 
-  double scan_time = now.seconds();
   scan_msg.scan_time = scan_time;
   scan_msg.time_increment = scan_time / (double)(node_count - 1);
   scan_msg.range_min = 0.15;
