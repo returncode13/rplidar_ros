@@ -103,7 +103,13 @@ private:
 
   std::string scan_mode_;
 
+  int angle_compensate_multiple_;
+
+  void declare_parameters();
+
   void connect_driver();
+
+  void check_scan_mode();
 
   void publish_scan(
     rplidar_response_measurement_node_hq_t * nodes,

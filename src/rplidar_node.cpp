@@ -60,21 +60,10 @@ RPlidarNode::RPlidarNode(const std::string & name, const rclcpp::NodeOptions & o
   inverted_(false),
   angle_compensate_(true),
   max_distance_(8.0),
-  scan_mode_("")
+  scan_mode_(""),
+  angle_compensate_multiple_(1)  // Angle compensate at per 1 degree
 {
-  declare_parameter<std::string>("channel_type", channel_type_);
-  declare_parameter<std::string>("tcp_ip", tcp_ip_);
-  declare_parameter<int>("tcp_port", tcp_port_);
-  declare_parameter<std::string>("serial_port", serial_port_);
-  declare_parameter<int>("serial_baudrate", serial_baudrate_);
-  declare_parameter<std::string>("frame_id", frame_id_);
-  declare_parameter<bool>("inverted", inverted_);
-  declare_parameter<bool>("angle_compensate", angle_compensate_);
-  declare_parameter<double>("max_distance", max_distance_);
-  declare_parameter<std::string>("scan_mode", scan_mode_);
-
-  float max_distance = 8.0;
-  int angle_compensate_multiple = 1;  // it stand of angle compensate at per 1 degree
+  declare_parameters();
 
   RCLCPP_INFO(get_logger(),
     "RPLIDAR running on ROS 2 package rplidar_ros. SDK Version:" RPLIDAR_SDK_VERSION "");
@@ -90,6 +79,22 @@ RPlidarNode::RPlidarNode(const std::string & name, const rclcpp::NodeOptions & o
 
   using namespace std::chrono_literals;
   timer_ = create_wall_timer(182ms, std::bind(&RPlidarNode::spin, this));  // 5.5Hz
+
+  connect_driver();
+}
+
+void RPlidarNode::declare_parameters()
+{
+  declare_parameter<std::string>("channel_type", channel_type_);
+  declare_parameter<std::string>("tcp_ip", tcp_ip_);
+  declare_parameter<int>("tcp_port", tcp_port_);
+  declare_parameter<std::string>("serial_port", serial_port_);
+  declare_parameter<int>("serial_baudrate", serial_baudrate_);
+  declare_parameter<std::string>("frame_id", frame_id_);
+  declare_parameter<bool>("inverted", inverted_);
+  declare_parameter<bool>("angle_compensate", angle_compensate_);
+  declare_parameter<double>("max_distance", max_distance_);
+  declare_parameter<std::string>("scan_mode", scan_mode_);
 }
 
 void RPlidarNode::connect_driver()
@@ -129,6 +134,67 @@ void RPlidarNode::connect_driver()
   }
 
   if (!check_health()) {
+    throw std::runtime_error("runtime_error");
+  }
+
+  driver_->startMotor();
+}
+
+void RPlidarNode::check_scan_mode()
+{
+  u_result op_result;
+  RplidarScanMode current_scan_mode;
+
+  if (scan_mode_.empty()) {
+    op_result = driver_->startScan(false /* not force scan */, true /* use typical scan mode */, 0,
+        &current_scan_mode);
+  } else {
+    std::vector<RplidarScanMode> allSupportedScanModes;
+    op_result = driver_->getAllSupportedScanModes(allSupportedScanModes);
+
+    if (IS_OK(op_result)) {
+      _u16 selected_scan_mode = _u16(-1);
+      for (auto & supported_scan_mode : allSupportedScanModes) {
+        if (supported_scan_mode.scan_mode == scan_mode_) {
+          selected_scan_mode = supported_scan_mode.id;
+          break;
+        }
+      }
+
+      if (selected_scan_mode == _u16(-1)) {
+        RCLCPP_WARN(
+          get_logger(), "Scan mode `%s' is not supported by lidar, supported modes:",
+          scan_mode_.c_str());
+        for (auto & supported_scan_mode : allSupportedScanModes) {
+          RCLCPP_WARN(
+            get_logger(), "\t%s: max_distance: %.1f m, Point number: %.1fK",
+            supported_scan_mode.scan_mode, supported_scan_mode.max_distance,
+            (1000 / supported_scan_mode.us_per_sample));
+        }
+        op_result = RESULT_OPERATION_FAIL;
+      } else {
+        op_result = driver_->startScanExpress(false /* not force scan */,
+            selected_scan_mode, 0, &current_scan_mode);
+      }
+    }
+  }
+
+  if (IS_OK(op_result)) {
+    // default frequent is 10 hz (by motor pwm value),
+    // current_scan_mode.us_per_sample is the number of scan point per us
+    angle_compensate_multiple_ =
+      (int)(1000 * 1000 / current_scan_mode.us_per_sample / 10.0 / 360.0);
+    if (angle_compensate_multiple_ < 1) {
+      angle_compensate_multiple_ = 1;
+    }
+    max_distance_ = current_scan_mode.max_distance;
+    RCLCPP_INFO(get_logger(),
+      "Current scan mode: %s, max_distance: %.1f m, Point number: %.1fK , angle_compensate: %d",
+      current_scan_mode.scan_mode,
+      current_scan_mode.max_distance, (1000 / current_scan_mode.us_per_sample),
+      angle_compensate_multiple_);
+  } else {
+    RCLCPP_ERROR(get_logger(), "Cannot start scan: %08x!", op_result);
     throw std::runtime_error("runtime_error");
   }
 }
