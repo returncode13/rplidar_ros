@@ -48,7 +48,7 @@ namespace rplidar_ros
 class RPlidarNode : public rclcpp::Node
 {
 public:
-  RPlidarNode(
+  explicit RPlidarNode(
     const std::string & name = "rplidar_node",
     const rclcpp::NodeOptions & options = rclcpp::NodeOptions());
 
@@ -74,6 +74,10 @@ private:
   std::unique_ptr<rp::standalone::rplidar::RPlidarDriver> driver_;
 
   rclcpp::Publisher<sensor_msgs::msg::LaserScan>::SharedPtr scan_publisher_;
+
+  rclcpp::Service<std_srvs::srv::Empty>::SharedPtr start_motor_server_;
+
+  rclcpp::Service<std_srvs::srv::Empty>::SharedPtr stop_motor_server_;
 
   rclcpp::Clock clock_;
 

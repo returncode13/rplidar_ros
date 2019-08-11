@@ -82,6 +82,12 @@ RPlidarNode::RPlidarNode(const std::string & name, const rclcpp::NodeOptions & o
   rclcpp::QoS qos(rclcpp::KeepLast(10));
   scan_publisher_ = create_publisher<sensor_msgs::msg::LaserScan>("scan", qos);
 
+  using namespace std::placeholders;
+  start_motor_server_ = create_service<std_srvs::srv::Empty>(
+    "start_motor", std::bind(&RPlidarNode::start_motor, this, _1, _2, _3));
+  stop_motor_server_ = create_service<std_srvs::srv::Empty>(
+    "stop_motor", std::bind(&RPlidarNode::stop_motor, this, _1, _2, _3));
+
   using namespace std::chrono_literals;
   timer_ = create_wall_timer(182ms, std::bind(&RPlidarNode::spin, this));  // 5.5Hz
 }
@@ -235,7 +241,7 @@ void RPlidarNode::publish_scan(
   scan_msg.angle_increment =
     (scan_msg.angle_max - scan_msg.angle_min) / (double)(node_count - 1);
 
-  double scan_time = clock_.now().seconds();
+  double scan_time = now.seconds();
   scan_msg.scan_time = scan_time;
   scan_msg.time_increment = scan_time / (double)(node_count - 1);
   scan_msg.range_min = 0.15;
