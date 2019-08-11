@@ -52,6 +52,8 @@ public:
     const std::string & name = "rplidar_node",
     const rclcpp::NodeOptions & options = rclcpp::NodeOptions());
 
+  virtual ~RPlidarNode();
+
   bool get_device_info();
 
   bool check_health();

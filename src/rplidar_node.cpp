@@ -83,6 +83,13 @@ RPlidarNode::RPlidarNode(const std::string & name, const rclcpp::NodeOptions & o
   connect_driver();
 }
 
+RPlidarNode::~RPlidarNode()
+{
+  if (driver_) {
+    RPlidarDriver::DisposeDriver(driver_.get());
+  }
+}
+
 void RPlidarNode::declare_parameters()
 {
   declare_parameter<std::string>("channel_type", channel_type_);
@@ -117,6 +124,7 @@ void RPlidarNode::connect_driver()
       RCLCPP_ERROR(get_logger(), "Error, cannot bind to the specified serial port %s.",
         serial_port_.c_str());
       RPlidarDriver::DisposeDriver(driver_.get());
+      driver_.reset(nullptr);
       throw std::runtime_error("runtime_error");
     }
 
@@ -125,6 +133,7 @@ void RPlidarNode::connect_driver()
       RCLCPP_ERROR(get_logger(), "Error, cannot bind to the specified serial port %s.",
         serial_port_.c_str());
       RPlidarDriver::DisposeDriver(driver_.get());
+      driver_.reset(nullptr);
       throw std::runtime_error("runtime_error");
     }
   }
