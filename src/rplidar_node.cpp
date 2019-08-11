@@ -32,6 +32,8 @@
  *
  */
 
+#include <chrono>
+#include <cmath>
 #include "rplidar_ros/rplidar_node.hpp"
 
 #ifndef _countof
@@ -44,27 +46,30 @@ namespace rplidar_ros
 {
 
 RPlidarNode::RPlidarNode(const std::string & name, const rclcpp::NodeOptions & options)
-: rclcpp::Node(name, options), driver_(nullptr)
+: rclcpp::Node(name, options),
+  driver_(nullptr),
+  clock_(RCL_ROS_TIME),
+  channel_type_("serial"),
+  tcp_ip_("192.168.0.7"),
+  serial_port_("/dev/ttyUSB0"),
+  tcp_port_(20108),
+  serial_baudrate_(115200),  // ros2 run for A1 A2, change to 256000 if A3
+  frame_id_("laser_frame"),
+  inverted_(false),
+  angle_compensate_(true),
+  max_distance_(8.0),
+  scan_mode_("")
 {
-  std::string channel_type = "serial";
-  std::string tcp_ip = "192.168.0.7";
-  std::string serial_port = "/dev/ttyUSB0";
-  int tcp_port = 20108;
-  int serial_baudrate = 115200;  // ros2 run for A1 A2, change to 256000 if A3
-  std::string frame_id = "laser_frame";
-  bool inverted = false;
-  bool angle_compensate = true;
-  std::string scan_mode;
-
-  declare_parameter<std::string>("channel_type", channel_type);
-  declare_parameter<std::string>("tcp_ip", tcp_ip);
-  declare_parameter<int>("tcp_port", tcp_port);
-  declare_parameter<std::string>("serial_port", serial_port);
-  declare_parameter<int>("serial_baudrate", serial_baudrate);
-  declare_parameter<std::string>("frame_id", frame_id);
-  declare_parameter<bool>("inverted", inverted);
-  declare_parameter<bool>("angle_compensate", angle_compensate);
-  declare_parameter<std::string>("scan_mode", scan_mode);
+  declare_parameter<std::string>("channel_type", channel_type_);
+  declare_parameter<std::string>("tcp_ip", tcp_ip_);
+  declare_parameter<int>("tcp_port", tcp_port_);
+  declare_parameter<std::string>("serial_port", serial_port_);
+  declare_parameter<int>("serial_baudrate", serial_baudrate_);
+  declare_parameter<std::string>("frame_id", frame_id_);
+  declare_parameter<bool>("inverted", inverted_);
+  declare_parameter<bool>("angle_compensate", angle_compensate_);
+  declare_parameter<double>("max_distance", max_distance_);
+  declare_parameter<std::string>("scan_mode", scan_mode_);
 
   float max_distance = 8.0;
   int angle_compensate_multiple = 1;  // it stand of angle compensate at per 1 degree
@@ -73,7 +78,7 @@ RPlidarNode::RPlidarNode(const std::string & name, const rclcpp::NodeOptions & o
     "RPLIDAR running on ROS 2 package rplidar_ros. SDK Version:" RPLIDAR_SDK_VERSION "");
 
   // create the driver instance
-  if (channel_type == "tcp") {
+  if (channel_type_ == "tcp") {
     driver_.reset(rp::standalone::rplidar::RPlidarDriver::CreateDriver(
         rp::standalone::rplidar::DRIVER_TYPE_TCP));
   } else {
@@ -81,6 +86,11 @@ RPlidarNode::RPlidarNode(const std::string & name, const rclcpp::NodeOptions & o
         rp::standalone::rplidar::DRIVER_TYPE_SERIALPORT));
   }
 
+  rclcpp::QoS qos(rclcpp::KeepLast(10));
+  scan_publisher_ = create_publisher<sensor_msgs::msg::LaserScan>("scan", qos);
+
+  using namespace std::chrono_literals;
+  timer_ = create_wall_timer(182ms, std::bind(&RPlidarNode::spin, this));  // 5.5Hz
 }
 
 bool RPlidarNode::get_device_info()
@@ -99,7 +109,7 @@ bool RPlidarNode::get_device_info()
   }
 
   RCLCPP_INFO(get_logger(), "Firmware Ver: %d.%02d",
-              dev_info.firmware_version >> 8, dev_info.firmware_version & 0xFF);
+    dev_info.firmware_version >> 8, dev_info.firmware_version & 0xFF);
   RCLCPP_INFO(get_logger(), "Hardware Rev: %d",
     (int)dev_info.hardware_version);
   return true;
@@ -112,7 +122,7 @@ bool RPlidarNode::check_health()
 
   result = driver_->getHealth(health_info);
   if (IS_OK(result)) {
-    RCLCPP_INFO(get_logger(), "RPLidar health status: %d", health_info.status);
+    RCLCPP_INFO(get_logger(), "RPlidar health status: %d", health_info.status);
     if (health_info.status == RPLIDAR_STATUS_ERROR) {
       RCLCPP_ERROR(
         get_logger(), "RPlidar internal error detected. Please reboot the device to retry.");
@@ -121,8 +131,7 @@ bool RPlidarNode::check_health()
       return true;
     }
   } else {
-    RCLCPP_ERROR(get_logger(), "Cannot retrieve rplidar health code: %x",
-                 result);
+    RCLCPP_ERROR(get_logger(), "Cannot retrieve RPlidar health code: %x", result);
     return false;
   }
 }
@@ -154,6 +163,70 @@ void RPlidarNode::stop_motor(
   driver_->stop();
   driver_->stopMotor();
 
+}
+
+void RPlidarNode::spin()
+{
+}
+
+void RPlidarNode::publish_scan(
+  rplidar_response_measurement_node_hq_t * nodes,
+  size_t node_count)
+{
+  float angle_min = DEG2RAD(0.0f);
+  float angle_max = DEG2RAD(359.0f);
+
+  static int scan_count = 0;
+  sensor_msgs::msg::LaserScan scan_msg;
+
+  rclcpp::Time now = clock_.now();
+  scan_msg.header.stamp = now;
+  scan_msg.header.frame_id = frame_id_;
+  scan_count++;
+
+  bool reversed = (angle_max > angle_min);
+  if (reversed) {
+    scan_msg.angle_min = M_PI - angle_max;
+    scan_msg.angle_max = M_PI - angle_min;
+  } else {
+    scan_msg.angle_min = M_PI - angle_min;
+    scan_msg.angle_max = M_PI - angle_max;
+  }
+  scan_msg.angle_increment =
+    (scan_msg.angle_max - scan_msg.angle_min) / (double)(node_count - 1);
+
+  double scan_time = clock_.now().seconds();
+  scan_msg.scan_time = scan_time;
+  scan_msg.time_increment = scan_time / (double)(node_count - 1);
+  scan_msg.range_min = 0.15;
+  scan_msg.range_max = max_distance_;
+
+  scan_msg.intensities.resize(node_count);
+  scan_msg.ranges.resize(node_count);
+  bool reverse_data = (!inverted_ && reversed) || (inverted_ && !reversed);
+  if (!reverse_data) {
+    for (size_t i = 0; i < node_count; i++) {
+      float read_value = (float) nodes[i].dist_mm_q2 / 4.0f / 1000;
+      if (read_value == 0.0) {
+        scan_msg.ranges[i] = std::numeric_limits<float>::infinity();
+      } else {
+        scan_msg.ranges[i] = read_value;
+      }
+      scan_msg.intensities[i] = (float) (nodes[i].quality >> 2);
+    }
+  } else {
+    for (size_t i = 0; i < node_count; i++) {
+      float read_value = (float)nodes[i].dist_mm_q2 / 4.0f / 1000;
+      if (read_value == 0.0) {
+        scan_msg.ranges[node_count - 1 - i] = std::numeric_limits<float>::infinity();
+      } else {
+        scan_msg.ranges[node_count - 1 - i] = read_value;
+      }
+      scan_msg.intensities[node_count - 1 - i] = (float) (nodes[i].quality >> 2);
+    }
+  }
+
+  scan_publisher_->publish(scan_msg);
 }
 
 }  // namespace rplidar_ros

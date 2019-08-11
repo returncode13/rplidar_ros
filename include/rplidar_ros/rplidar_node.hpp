@@ -52,8 +52,6 @@ public:
     const std::string & name = "rplidar_node",
     const rclcpp::NodeOptions & options = rclcpp::NodeOptions());
 
-  void publish_scan();
-
   bool get_device_info();
 
   bool check_health();
@@ -74,6 +72,36 @@ public:
 
 private:
   std::unique_ptr<rp::standalone::rplidar::RPlidarDriver> driver_;
+
+  rclcpp::Publisher<sensor_msgs::msg::LaserScan>::SharedPtr scan_publisher_;
+
+  rclcpp::Clock clock_;
+
+  rclcpp::TimerBase::SharedPtr timer_;
+
+  std::string channel_type_;
+
+  std::string tcp_ip_;
+
+  std::string serial_port_;
+
+  int tcp_port_;
+
+  int serial_baudrate_;
+
+  std::string frame_id_;
+
+  bool inverted_;
+
+  bool angle_compensate_;
+
+  double max_distance_;
+
+  std::string scan_mode_;
+
+  void publish_scan(
+      rplidar_response_measurement_node_hq_t * nodes,
+      size_t node_count);
 };
 
 }  // namespace rplidar_ros
