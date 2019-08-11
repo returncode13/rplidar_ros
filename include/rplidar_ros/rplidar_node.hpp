@@ -99,9 +99,11 @@ private:
 
   std::string scan_mode_;
 
+  void connect_driver();
+
   void publish_scan(
-      rplidar_response_measurement_node_hq_t * nodes,
-      size_t node_count);
+    rplidar_response_measurement_node_hq_t * nodes,
+    size_t node_count);
 };
 
 }  // namespace rplidar_ros

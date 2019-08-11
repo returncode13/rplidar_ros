@@ -42,6 +42,8 @@
 
 #define DEG2RAD(x) ((x) * M_PI / 180.)
 
+using namespace rp::standalone::rplidar;
+
 namespace rplidar_ros
 {
 
@@ -77,7 +79,15 @@ RPlidarNode::RPlidarNode(const std::string & name, const rclcpp::NodeOptions & o
   RCLCPP_INFO(get_logger(),
     "RPLIDAR running on ROS 2 package rplidar_ros. SDK Version:" RPLIDAR_SDK_VERSION "");
 
-  // create the driver instance
+  rclcpp::QoS qos(rclcpp::KeepLast(10));
+  scan_publisher_ = create_publisher<sensor_msgs::msg::LaserScan>("scan", qos);
+
+  using namespace std::chrono_literals;
+  timer_ = create_wall_timer(182ms, std::bind(&RPlidarNode::spin, this));  // 5.5Hz
+}
+
+void RPlidarNode::connect_driver()
+{
   if (channel_type_ == "tcp") {
     driver_.reset(rp::standalone::rplidar::RPlidarDriver::CreateDriver(
         rp::standalone::rplidar::DRIVER_TYPE_TCP));
@@ -86,11 +96,35 @@ RPlidarNode::RPlidarNode(const std::string & name, const rclcpp::NodeOptions & o
         rp::standalone::rplidar::DRIVER_TYPE_SERIALPORT));
   }
 
-  rclcpp::QoS qos(rclcpp::KeepLast(10));
-  scan_publisher_ = create_publisher<sensor_msgs::msg::LaserScan>("scan", qos);
+  if (!driver_) {
+    RCLCPP_ERROR(get_logger(), "Create Driver fail, exit");
+    throw std::runtime_error("runtime_error");
+  }
 
-  using namespace std::chrono_literals;
-  timer_ = create_wall_timer(182ms, std::bind(&RPlidarNode::spin, this));  // 5.5Hz
+  if (channel_type_ == "tcp") {
+    if (IS_FAIL(driver_->connect(tcp_ip_.c_str(), (_u32)tcp_port_))) {
+      RCLCPP_ERROR(get_logger(), "Error, cannot bind to the specified serial port %s.",
+        serial_port_.c_str());
+      RPlidarDriver::DisposeDriver(driver_.get());
+      throw std::runtime_error("runtime_error");
+    }
+
+  } else {
+    if (IS_FAIL(driver_->connect(serial_port_.c_str(), (_u32)serial_baudrate_))) {
+      RCLCPP_ERROR(get_logger(), "Error, cannot bind to the specified serial port %s.",
+        serial_port_.c_str());
+      RPlidarDriver::DisposeDriver(driver_.get());
+      throw std::runtime_error("runtime_error");
+    }
+  }
+
+  if (!get_device_info()) {
+    throw std::runtime_error("runtime_error");
+  }
+
+  if (!check_health()) {
+    throw std::runtime_error("runtime_error");
+  }
 }
 
 bool RPlidarNode::get_device_info()
@@ -163,6 +197,12 @@ void RPlidarNode::stop_motor(
   driver_->stop();
   driver_->stopMotor();
 
+}
+
+float RPlidarNode::get_angle(
+  const rplidar_response_measurement_node_hq_t & node)
+{
+  return node.angle_z_q14 * 90.f / 16384.f;
 }
 
 void RPlidarNode::spin()
