@@ -89,11 +89,11 @@ private:
 
   std::string tcp_ip_;
 
-  int tcp_port_;
+  int64_t tcp_port_;
 
   std::string serial_port_;
 
-  int serial_baudrate_;
+  int64_t serial_baudrate_;
 
   std::string frame_id_;
 

@@ -97,9 +97,9 @@ void RPlidarNode::declare_parameters()
 {
   declare_parameter<std::string>("channel_type", channel_type_);
   declare_parameter<std::string>("tcp_ip", tcp_ip_);
-  declare_parameter<int>("tcp_port", tcp_port_);
+  declare_parameter<int64_t>("tcp_port", tcp_port_);
   declare_parameter<std::string>("serial_port", serial_port_);
-  declare_parameter<int>("serial_baudrate", serial_baudrate_);
+  declare_parameter<int64_t>("serial_baudrate", serial_baudrate_);
   declare_parameter<std::string>("frame_id", frame_id_);
   declare_parameter<bool>("inverted", inverted_);
   declare_parameter<bool>("angle_compensate", angle_compensate_);
@@ -111,10 +111,10 @@ void RPlidarNode::get_parameters()
 {
   get_parameter_or<std::string>("channel_type", channel_type_, "serial");
   get_parameter_or<std::string>("tcp_ip", tcp_ip_, "192.168.0.7");
-  get_parameter_or<int>("tcp_port", tcp_port_, 20108);
+  get_parameter_or<int64_t>("tcp_port", tcp_port_, 20108);
   get_parameter_or<std::string>("serial_port", serial_port_, "/dev/ttyUSB0");
   // run for A1 A2, change to 256000 if A3
-  get_parameter_or<int>("serial_baudrate", serial_baudrate_, 115200);
+  get_parameter_or<int64_t>("serial_baudrate", serial_baudrate_, 115200);
   get_parameter_or<std::string>("frame_id", frame_id_, "laser_frame");
   get_parameter_or<bool>("inverted", inverted_, false);
   get_parameter_or<bool>("angle_compensate", angle_compensate_, true);
