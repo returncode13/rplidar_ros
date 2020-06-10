@@ -52,19 +52,20 @@ RPlidarNode::RPlidarNode(const std::string & name, const rclcpp::NodeOptions & o
 : rclcpp::Node(name, options),
   driver_(nullptr),
   clock_(RCL_ROS_TIME),
-  channel_type_("serial"),
-  tcp_ip_("192.168.0.7"),
-  serial_port_("/dev/ttyUSB0"),
-  tcp_port_(20108),
-  serial_baudrate_(115200),  // ros2 run for A1 A2, change to 256000 if A3
-  frame_id_("laser_frame"),
+  channel_type_(""),
+  tcp_ip_(""),
+  tcp_port_(0),
+  serial_port_(""),
+  serial_baudrate_(0),
+  frame_id_(""),
   inverted_(false),
-  angle_compensate_(true),
-  max_distance_(8.0),
+  angle_compensate_(false),
+  max_distance_(0.0),
   scan_mode_(""),
   angle_compensate_multiple_(1)  // Angle compensate at per 1 degree
 {
   declare_parameters();
+  get_parameters();
 
   RCLCPP_INFO(get_logger(),
     "RPLIDAR running on ROS 2 package rplidar_ros. SDK Version:" RPLIDAR_SDK_VERSION "");
@@ -104,6 +105,21 @@ void RPlidarNode::declare_parameters()
   declare_parameter<bool>("angle_compensate", angle_compensate_);
   declare_parameter<double>("max_distance", max_distance_);
   declare_parameter<std::string>("scan_mode", scan_mode_);
+}
+
+void RPlidarNode::get_parameters()
+{
+  get_parameter_or<std::string>("channel_type", channel_type_, "serial");
+  get_parameter_or<std::string>("tcp_ip", tcp_ip_, "192.168.0.7");
+  get_parameter_or<int>("tcp_port", tcp_port_, 20108);
+  get_parameter_or<std::string>("serial_port", serial_port_, "/dev/ttyUSB0");
+  // run for A1 A2, change to 256000 if A3
+  get_parameter_or<int>("serial_baudrate", serial_baudrate_, 115200);
+  get_parameter_or<std::string>("frame_id", frame_id_, "laser_frame");
+  get_parameter_or<bool>("inverted", inverted_, false);
+  get_parameter_or<bool>("angle_compensate", angle_compensate_, true);
+  get_parameter_or<double>("max_distance", max_distance_, 8.0);
+  get_parameter_or<std::string>("scan_mode", scan_mode_, "");
 }
 
 void RPlidarNode::connect_driver()

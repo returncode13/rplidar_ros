@@ -89,9 +89,9 @@ private:
 
   std::string tcp_ip_;
 
-  std::string serial_port_;
-
   int tcp_port_;
+
+  std::string serial_port_;
 
   int serial_baudrate_;
 
@@ -108,6 +108,8 @@ private:
   int angle_compensate_multiple_;
 
   void declare_parameters();
+
+  void get_parameters();
 
   void connect_driver();
 
