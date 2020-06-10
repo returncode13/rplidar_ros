@@ -139,7 +139,7 @@ void RPlidarNode::connect_driver()
 
   if (channel_type_ == "tcp") {
     if (IS_FAIL(driver_->connect(tcp_ip_.c_str(), (_u32)tcp_port_))) {
-      RCLCPP_ERROR(get_logger(), "Error, cannot bind to the specified serial port %s.",
+      RCLCPP_ERROR(get_logger(), "Error, cannot bind to the specified tcp port %s.",
         serial_port_.c_str());
       RPlidarDriver::DisposeDriver(driver_.get());
       driver_.reset(nullptr);
