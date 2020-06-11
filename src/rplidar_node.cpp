@@ -52,15 +52,15 @@ RPlidarNode::RPlidarNode(const std::string & name, const rclcpp::NodeOptions & o
 : rclcpp::Node(name, options),
   driver_(nullptr),
   clock_(RCL_ROS_TIME),
-  channel_type_(""),
-  tcp_ip_(""),
-  tcp_port_(0),
-  serial_port_(""),
-  serial_baudrate_(0),
-  frame_id_(""),
+  channel_type_("serial"),
+  tcp_ip_("192.168.0.7"),
+  tcp_port_(20108),
+  serial_port_("/dev/ttyUSB0"),
+  serial_baudrate_(115200),
+  frame_id_("laser_frame"),
   inverted_(false),
-  angle_compensate_(false),
-  max_distance_(0.0),
+  angle_compensate_(true),
+  max_distance_(8.0),
   scan_mode_(""),
   angle_compensate_multiple_(1)  // Angle compensate at per 1 degree
 {
@@ -109,17 +109,17 @@ void RPlidarNode::declare_parameters()
 
 void RPlidarNode::get_parameters()
 {
-  get_parameter_or<std::string>("channel_type", channel_type_, "serial");
-  get_parameter_or<std::string>("tcp_ip", tcp_ip_, "192.168.0.7");
-  get_parameter_or<int64_t>("tcp_port", tcp_port_, 20108);
-  get_parameter_or<std::string>("serial_port", serial_port_, "/dev/ttyUSB0");
+  get_parameter<std::string>("channel_type", channel_type_);
+  get_parameter<std::string>("tcp_ip", tcp_ip_);
+  get_parameter<int64_t>("tcp_port", tcp_port_);
+  get_parameter<std::string>("serial_port", serial_port_);
   // run for A1 A2, change to 256000 if A3
-  get_parameter_or<int64_t>("serial_baudrate", serial_baudrate_, 115200);
-  get_parameter_or<std::string>("frame_id", frame_id_, "laser_frame");
-  get_parameter_or<bool>("inverted", inverted_, false);
-  get_parameter_or<bool>("angle_compensate", angle_compensate_, true);
-  get_parameter_or<double>("max_distance", max_distance_, 8.0);
-  get_parameter_or<std::string>("scan_mode", scan_mode_, "");
+  get_parameter<int64_t>("serial_baudrate", serial_baudrate_);
+  get_parameter<std::string>("frame_id", frame_id_);
+  get_parameter<bool>("inverted", inverted_);
+  get_parameter<bool>("angle_compensate", angle_compensate_);
+  get_parameter<double>("max_distance", max_distance_);
+  get_parameter<std::string>("scan_mode", scan_mode_);
 }
 
 void RPlidarNode::connect_driver()
