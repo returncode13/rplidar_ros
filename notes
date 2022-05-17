@@ -1,0 +1,24 @@
+#couldnt get /dev/ttyUSB0 to stick around. Would appear and disappear!
+https://unix.stackexchange.com/questions/696001/dev-ttyusb0-is-available-but-after-try-to-call-its-gone
+
+solution:
+plug the rplidar A1
+sudo dmesg 
+found that "brltty" was claiming the port
+solution was to sudo apt remove brltty
+
+Also added user to the dialout group
+
+
+#to start the laserscan in rviz using docker
+first connect the lidar to the usb terminal 
+sudo chmod 666 /dev/ttyUSB0
+
+pass this to the device to the docker container running ros.
+make sure to include the setup.bash file under install folder to the ~/.bashrc
+
+$ ros2 run rplidar_ros rplidar_node  # for RPLIDAR A1/A2
+$ ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0  world laser_frame  # this is to transform fixed frame to laser .
+
+$ rviz2    # change Fixed Frame option from fixed_frame to laser_frame and add LaserScan
+

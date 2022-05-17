@@ -1,0 +1,92 @@
+[0.015s] Invoking command in '/home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sharath/progs/ros2/ros2_ws/install/numb_py:/home/sharath/progs/ros2/ros2_ws/install/my_py_pkg:/opt/ros/foxy /usr/bin/cmake /home/sharath/progs/rplidar/rplidar_ros -DCMAKE_INSTALL_PREFIX=/home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros
+[0.173s] -- Found ament_cmake: 0.9.9 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.221s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.423s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.504s] -- Found rclcpp: 2.4.1 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.692s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.701s] -- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[1.097s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.206s] -- Found rmw_implementation_cmake: 1.0.3 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.208s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.430s] -- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[1.542s] -- Found std_srvs: 2.0.5 (/opt/ros/foxy/share/std_srvs/cmake)
+[1.738s] -- Configuring done
+[1.845s] -- Generating done
+[1.847s] -- Build files have been written to: /home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros
+[1.854s] Invoked command in '/home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sharath/progs/ros2/ros2_ws/install/numb_py:/home/sharath/progs/ros2/ros2_ws/install/my_py_pkg:/opt/ros/foxy /usr/bin/cmake /home/sharath/progs/rplidar/rplidar_ros -DCMAKE_INSTALL_PREFIX=/home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros
+[1.857s] Invoking command in '/home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sharath/progs/ros2/ros2_ws/install/numb_py:/home/sharath/progs/ros2/ros2_ws/install/my_py_pkg:/opt/ros/foxy /usr/bin/cmake --build /home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros -- -j4 -l4
+[2.031s] [100%] Built target rplidar_node
+[2.042s] Invoked command in '/home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sharath/progs/ros2/ros2_ws/install/numb_py:/home/sharath/progs/ros2/ros2_ws/install/my_py_pkg:/opt/ros/foxy /usr/bin/cmake --build /home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros -- -j4 -l4
+[2.081s] Invoking command in '/home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sharath/progs/ros2/ros2_ws/install/numb_py:/home/sharath/progs/ros2/ros2_ws/install/my_py_pkg:/opt/ros/foxy /usr/bin/cmake --install /home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros
+[2.089s] -- Install configuration: ""
+[2.089s] -- Execute custom install script
+[2.090s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/lib/rplidar_ros/rplidar_node
+[2.091s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/rplidar.launch
+[2.092s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/rplidar_a3.launch
+[2.092s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/rplidar_s1.launch
+[2.092s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/rplidar_s1_tcp.launch
+[2.093s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/test_rplidar.launch
+[2.093s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/test_rplidar_a3.launch
+[2.093s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/view_rplidar.launch
+[2.094s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/view_rplidar_a3.launch
+[2.094s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/view_rplidar_s1.launch
+[2.095s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/view_rplidar_s1_tcp.launch
+[2.096s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//rviz/rplidar.rviz
+[2.097s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/README.txt
+[2.097s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/include/rplidar.h
+[2.097s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/include/rplidar_cmd.h
+[2.098s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/include/rplidar_driver.h
+[2.098s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/include/rplidar_protocol.h
+[2.098s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/include/rptypes.h
+[2.099s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/linux/arch_linux.h
+[2.099s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/linux/net_serial.cpp
+[2.099s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/linux/net_serial.h
+[2.100s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/linux/net_socket.cpp
+[2.100s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/linux/thread.hpp
+[2.100s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/linux/timer.cpp
+[2.101s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/linux/timer.h
+[2.101s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/macOS/arch_macOS.h
+[2.101s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/macOS/net_serial.cpp
+[2.102s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/macOS/net_serial.h
+[2.102s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/macOS/net_socket.cpp
+[2.102s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/macOS/thread.hpp
+[2.103s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/macOS/timer.cpp
+[2.103s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/macOS/timer.h
+[2.103s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/win32/arch_win32.h
+[2.104s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/win32/net_serial.cpp
+[2.104s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/win32/net_serial.h
+[2.104s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/win32/net_socket.cpp
+[2.104s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/win32/timer.cpp
+[2.105s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/win32/timer.h
+[2.105s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/win32/winthread.hpp
+[2.105s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/abs_rxtx.h
+[2.106s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/assert.h
+[2.106s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/byteops.h
+[2.106s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/event.h
+[2.107s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/locker.h
+[2.107s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/socket.h
+[2.107s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/thread.cpp
+[2.107s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/thread.h
+[2.108s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/types.h
+[2.108s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/util.h
+[2.109s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/rplidar_driver.cpp
+[2.109s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/rplidar_driver_TCP.h
+[2.109s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/rplidar_driver_impl.h
+[2.109s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/rplidar_driver_serial.h
+[2.110s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/sdkcommon.h
+[2.110s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/ament_index/resource_index/package_run_dependencies/rplidar_ros
+[2.111s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/ament_index/resource_index/parent_prefix_path/rplidar_ros
+[2.111s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/environment/ament_prefix_path.sh
+[2.112s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/environment/ament_prefix_path.dsv
+[2.112s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/environment/path.sh
+[2.113s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/environment/path.dsv
+[2.113s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/local_setup.bash
+[2.114s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/local_setup.sh
+[2.114s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/local_setup.zsh
+[2.115s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/local_setup.dsv
+[2.115s] -- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/package.dsv
+[2.124s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/ament_index/resource_index/packages/rplidar_ros
+[2.124s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/cmake/rplidar_rosConfig.cmake
+[2.124s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/cmake/rplidar_rosConfig-version.cmake
+[2.125s] -- Up-to-date symlink: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/package.xml
+[2.127s] Invoked command in '/home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sharath/progs/ros2/ros2_ws/install/numb_py:/home/sharath/progs/ros2/ros2_ws/install/my_py_pkg:/opt/ros/foxy /usr/bin/cmake --install /home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros

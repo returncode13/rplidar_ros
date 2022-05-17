@@ -1,0 +1,195 @@
+[0.000000] (-) TimerEvent: {}
+[0.000785] (rplidar_ros) JobQueued: {'identifier': 'rplidar_ros', 'dependencies': OrderedDict()}
+[0.000891] (rplidar_ros) JobStarted: {'identifier': 'rplidar_ros'}
+[0.012009] (rplidar_ros) JobProgress: {'identifier': 'rplidar_ros', 'progress': 'cmake'}
+[0.012308] (rplidar_ros) Command: {'cmd': ['/usr/bin/cmake', '/home/sharath/progs/rplidar/rplidar_ros', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros'], 'cwd': '/home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros', 'env': OrderedDict([('HOSTNAME', 'b3dc7eef572f'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/sharath'), ('OLDPWD', '/home/sharath/progs/rplidar'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/home/sharath/progs/ros2/ros2_ws/install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/sharath/progs/ros2/ros2_ws/install/numb_py:/home/sharath/progs/ros2/ros2_ws/install/numb_cpp:/home/sharath/progs/ros2/ros2_ws/install/my_py_pkg:/home/sharath/progs/ros2/ros2_ws/install/my_cpp_pkg:/opt/ros/foxy'), ('PWD', '/home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/home/sharath/progs/ros2/ros2_ws/install/numb_py/lib/python3.8/site-packages:/home/sharath/progs/ros2/ros2_ws/build/my_py_pkg:/home/sharath/progs/ros2/ros2_ws/install/my_py_pkg/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/sharath/progs/ros2/ros2_ws/install/numb_cpp:/home/sharath/progs/ros2/ros2_ws/install/my_cpp_pkg:/home/sharath/progs/ros2/ros2_ws/install/numb_py:/home/sharath/progs/ros2/ros2_ws/install/my_py_pkg:/opt/ros/foxy')]), 'shell': False}
+[0.065077] (rplidar_ros) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.099821] (-) TimerEvent: {}
+[0.114334] (rplidar_ros) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.118914] (rplidar_ros) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.181050] (rplidar_ros) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.181968] (rplidar_ros) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.199923] (-) TimerEvent: {}
+[0.244186] (rplidar_ros) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.255322] (rplidar_ros) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.255697] (rplidar_ros) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.258235] (rplidar_ros) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.300028] (-) TimerEvent: {}
+[0.331967] (rplidar_ros) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.333135] (rplidar_ros) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.400133] (-) TimerEvent: {}
+[0.409390] (rplidar_ros) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.421055] (rplidar_ros) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.421587] (rplidar_ros) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.424479] (rplidar_ros) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.9 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.453841] (rplidar_ros) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[0.454127] (rplidar_ros) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.500238] (-) TimerEvent: {}
+[0.600477] (-) TimerEvent: {}
+[0.618889] (rplidar_ros) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.671031] (rplidar_ros) StdoutLine: {'line': b'-- Found rclcpp: 2.4.1 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[0.700564] (-) TimerEvent: {}
+[0.721323] (rplidar_ros) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.729503] (rplidar_ros) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.800660] (-) TimerEvent: {}
+[0.812524] (rplidar_ros) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[0.843801] (rplidar_ros) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[0.900763] (-) TimerEvent: {}
+[0.929349] (rplidar_ros) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.991883] (rplidar_ros) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.3 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[0.993694] (rplidar_ros) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.994748] (rplidar_ros) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[1.000838] (-) TimerEvent: {}
+[1.064923] (rplidar_ros) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.065199] (rplidar_ros) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.100960] (-) TimerEvent: {}
+[1.134893] (rplidar_ros) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[1.135118] (rplidar_ros) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[1.189991] (rplidar_ros) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[1.190343] (rplidar_ros) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[1.201062] (-) TimerEvent: {}
+[1.257055] (rplidar_ros) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[1.258201] (rplidar_ros) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.301157] (-) TimerEvent: {}
+[1.401412] (-) TimerEvent: {}
+[1.413222] (rplidar_ros) StdoutLine: {'line': b'-- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)\n'}
+[1.501516] (-) TimerEvent: {}
+[1.533007] (rplidar_ros) StdoutLine: {'line': b'-- Found std_srvs: 2.0.5 (/opt/ros/foxy/share/std_srvs/cmake)\n'}
+[1.601625] (-) TimerEvent: {}
+[1.609878] (rplidar_ros) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.619168] (rplidar_ros) StdoutLine: {'line': b'-- Generating done\n'}
+[1.620781] (rplidar_ros) StdoutLine: {'line': b'-- Build files have been written to: /home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros\n'}
+[1.628985] (rplidar_ros) CommandEnded: {'returncode': 0}
+[1.629647] (rplidar_ros) JobProgress: {'identifier': 'rplidar_ros', 'progress': 'build'}
+[1.631672] (rplidar_ros) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros', '--', '-j4', '-l4'], 'cwd': '/home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros', 'env': OrderedDict([('HOSTNAME', 'b3dc7eef572f'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/sharath'), ('OLDPWD', '/home/sharath/progs/rplidar'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/home/sharath/progs/ros2/ros2_ws/install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/sharath/progs/ros2/ros2_ws/install/numb_py:/home/sharath/progs/ros2/ros2_ws/install/numb_cpp:/home/sharath/progs/ros2/ros2_ws/install/my_py_pkg:/home/sharath/progs/ros2/ros2_ws/install/my_cpp_pkg:/opt/ros/foxy'), ('PWD', '/home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/home/sharath/progs/ros2/ros2_ws/install/numb_py/lib/python3.8/site-packages:/home/sharath/progs/ros2/ros2_ws/build/my_py_pkg:/home/sharath/progs/ros2/ros2_ws/install/my_py_pkg/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/sharath/progs/ros2/ros2_ws/install/numb_cpp:/home/sharath/progs/ros2/ros2_ws/install/my_cpp_pkg:/home/sharath/progs/ros2/ros2_ws/install/numb_py:/home/sharath/progs/ros2/ros2_ws/install/my_py_pkg:/opt/ros/foxy')]), 'shell': False}
+[1.671155] (rplidar_ros) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target rplidar_node\x1b[0m\n'}
+[1.701734] (-) TimerEvent: {}
+[1.713422] (rplidar_ros) StdoutLine: {'line': b'[ 28%] \x1b[32mBuilding CXX object CMakeFiles/rplidar_node.dir/sdk/src/arch/linux/net_socket.cpp.o\x1b[0m\n'}
+[1.713643] (rplidar_ros) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding CXX object CMakeFiles/rplidar_node.dir/sdk/src/arch/linux/net_serial.cpp.o\x1b[0m\n'}
+[1.713797] (rplidar_ros) StdoutLine: {'line': b'[ 28%] \x1b[32mBuilding CXX object CMakeFiles/rplidar_node.dir/src/rplidar_node.cpp.o\x1b[0m\n'}
+[1.714378] (rplidar_ros) StdoutLine: {'line': b'[ 57%] \x1b[32mBuilding CXX object CMakeFiles/rplidar_node.dir/sdk/src/arch/linux/timer.cpp.o\x1b[0m\n'}
+[1.801836] (-) TimerEvent: {}
+[1.902194] (-) TimerEvent: {}
+[2.002479] (-) TimerEvent: {}
+[2.020810] (rplidar_ros) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/rplidar_node.dir/sdk/src/hal/thread.cpp.o\x1b[0m\n'}
+[2.098459] (rplidar_ros) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding CXX object CMakeFiles/rplidar_node.dir/sdk/src/rplidar_driver.cpp.o\x1b[0m\n'}
+[2.102626] (-) TimerEvent: {}
+[2.203323] (-) TimerEvent: {}
+[2.304001] (-) TimerEvent: {}
+[2.404281] (-) TimerEvent: {}
+[2.504549] (-) TimerEvent: {}
+[2.604927] (-) TimerEvent: {}
+[2.705219] (-) TimerEvent: {}
+[2.805578] (-) TimerEvent: {}
+[2.905850] (-) TimerEvent: {}
+[3.006152] (-) TimerEvent: {}
+[3.106434] (-) TimerEvent: {}
+[3.206715] (-) TimerEvent: {}
+[3.306996] (-) TimerEvent: {}
+[3.407260] (-) TimerEvent: {}
+[3.507551] (-) TimerEvent: {}
+[3.607842] (-) TimerEvent: {}
+[3.708125] (-) TimerEvent: {}
+[3.808416] (-) TimerEvent: {}
+[3.908702] (-) TimerEvent: {}
+[4.008989] (-) TimerEvent: {}
+[4.109275] (-) TimerEvent: {}
+[4.209572] (-) TimerEvent: {}
+[4.309923] (-) TimerEvent: {}
+[4.410214] (-) TimerEvent: {}
+[4.510490] (-) TimerEvent: {}
+[4.610753] (-) TimerEvent: {}
+[4.711021] (-) TimerEvent: {}
+[4.811319] (-) TimerEvent: {}
+[4.911608] (-) TimerEvent: {}
+[5.011877] (-) TimerEvent: {}
+[5.112152] (-) TimerEvent: {}
+[5.161558] (rplidar_ros) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable rplidar_node\x1b[0m\n'}
+[5.212251] (-) TimerEvent: {}
+[5.312544] (-) TimerEvent: {}
+[5.381406] (rplidar_ros) StdoutLine: {'line': b'[100%] Built target rplidar_node\n'}
+[5.392860] (rplidar_ros) CommandEnded: {'returncode': 0}
+[5.412664] (-) TimerEvent: {}
+[5.423503] (rplidar_ros) JobProgress: {'identifier': 'rplidar_ros', 'progress': 'install'}
+[5.435335] (rplidar_ros) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros'], 'cwd': '/home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros', 'env': OrderedDict([('HOSTNAME', 'b3dc7eef572f'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/sharath'), ('OLDPWD', '/home/sharath/progs/rplidar'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/home/sharath/progs/ros2/ros2_ws/install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/sharath/progs/ros2/ros2_ws/install/numb_py:/home/sharath/progs/ros2/ros2_ws/install/numb_cpp:/home/sharath/progs/ros2/ros2_ws/install/my_py_pkg:/home/sharath/progs/ros2/ros2_ws/install/my_cpp_pkg:/opt/ros/foxy'), ('PWD', '/home/sharath/progs/rplidar/rplidar_ros/build/rplidar_ros'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/home/sharath/progs/ros2/ros2_ws/install/numb_py/lib/python3.8/site-packages:/home/sharath/progs/ros2/ros2_ws/build/my_py_pkg:/home/sharath/progs/ros2/ros2_ws/install/my_py_pkg/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/sharath/progs/ros2/ros2_ws/install/numb_cpp:/home/sharath/progs/ros2/ros2_ws/install/my_cpp_pkg:/home/sharath/progs/ros2/ros2_ws/install/numb_py:/home/sharath/progs/ros2/ros2_ws/install/my_py_pkg:/opt/ros/foxy')]), 'shell': False}
+[5.445998] (rplidar_ros) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[5.446586] (rplidar_ros) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[5.447075] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/lib/rplidar_ros/rplidar_node\n'}
+[5.457037] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/rplidar.launch\n'}
+[5.466434] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/rplidar_a3.launch\n'}
+[5.475687] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/rplidar_s1.launch\n'}
+[5.484864] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/rplidar_s1_tcp.launch\n'}
+[5.493994] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/test_rplidar.launch\n'}
+[5.503582] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/test_rplidar_a3.launch\n'}
+[5.512782] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/view_rplidar.launch\n'}
+[5.512965] (-) TimerEvent: {}
+[5.521899] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/view_rplidar_a3.launch\n'}
+[5.531171] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/view_rplidar_s1.launch\n'}
+[5.540501] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//launch/view_rplidar_s1_tcp.launch\n'}
+[5.550239] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//rviz/rplidar.rviz\n'}
+[5.559805] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/README.txt\n'}
+[5.568720] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/include/rplidar.h\n'}
+[5.577395] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/include/rplidar_cmd.h\n'}
+[5.585676] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/include/rplidar_driver.h\n'}
+[5.594141] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/include/rplidar_protocol.h\n'}
+[5.602600] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/include/rptypes.h\n'}
+[5.610980] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/linux/arch_linux.h\n'}
+[5.613059] (-) TimerEvent: {}
+[5.619447] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/linux/net_serial.cpp\n'}
+[5.627988] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/linux/net_serial.h\n'}
+[5.636152] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/linux/net_socket.cpp\n'}
+[5.645023] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/linux/thread.hpp\n'}
+[5.653584] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/linux/timer.cpp\n'}
+[5.661985] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/linux/timer.h\n'}
+[5.670673] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/macOS/arch_macOS.h\n'}
+[5.679299] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/macOS/net_serial.cpp\n'}
+[5.687572] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/macOS/net_serial.h\n'}
+[5.695838] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/macOS/net_socket.cpp\n'}
+[5.703958] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/macOS/thread.hpp\n'}
+[5.712237] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/macOS/timer.cpp\n'}
+[5.713148] (-) TimerEvent: {}
+[5.720383] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/macOS/timer.h\n'}
+[5.728795] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/win32/arch_win32.h\n'}
+[5.736950] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/win32/net_serial.cpp\n'}
+[5.745706] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/win32/net_serial.h\n'}
+[5.754132] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/win32/net_socket.cpp\n'}
+[5.763699] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/win32/timer.cpp\n'}
+[5.772332] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/win32/timer.h\n'}
+[5.781922] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/arch/win32/winthread.hpp\n'}
+[5.791622] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/abs_rxtx.h\n'}
+[5.800724] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/assert.h\n'}
+[5.810506] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/byteops.h\n'}
+[5.813237] (-) TimerEvent: {}
+[5.819679] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/event.h\n'}
+[5.828958] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/locker.h\n'}
+[5.838397] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/socket.h\n'}
+[5.848156] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/thread.cpp\n'}
+[5.856629] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/thread.h\n'}
+[5.866176] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/types.h\n'}
+[5.874843] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/hal/util.h\n'}
+[5.883931] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/rplidar_driver.cpp\n'}
+[5.892664] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/rplidar_driver_TCP.h\n'}
+[5.901734] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/rplidar_driver_impl.h\n'}
+[5.910879] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/rplidar_driver_serial.h\n'}
+[5.913331] (-) TimerEvent: {}
+[5.919800] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros//sdk/src/sdkcommon.h\n'}
+[5.929349] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/ament_index/resource_index/package_run_dependencies/rplidar_ros\n'}
+[5.938571] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/ament_index/resource_index/parent_prefix_path/rplidar_ros\n'}
+[5.948293] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/environment/ament_prefix_path.sh\n'}
+[5.957437] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/environment/ament_prefix_path.dsv\n'}
+[5.966761] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/environment/path.sh\n'}
+[5.976157] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/environment/path.dsv\n'}
+[5.985529] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/local_setup.bash\n'}
+[5.994510] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/local_setup.sh\n'}
+[6.003866] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/local_setup.zsh\n'}
+[6.013388] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/local_setup.dsv\n'}
+[6.013569] (-) TimerEvent: {}
+[6.022919] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/package.dsv\n'}
+[6.032485] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/ament_index/resource_index/packages/rplidar_ros\n'}
+[6.042056] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/cmake/rplidar_rosConfig.cmake\n'}
+[6.051681] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/cmake/rplidar_rosConfig-version.cmake\n'}
+[6.061156] (rplidar_ros) StdoutLine: {'line': b'-- Symlinking: /home/sharath/progs/rplidar/rplidar_ros/install/rplidar_ros/share/rplidar_ros/package.xml\n'}
+[6.072633] (rplidar_ros) CommandEnded: {'returncode': 0}
+[6.113706] (-) TimerEvent: {}
+[6.125375] (rplidar_ros) JobEnded: {'identifier': 'rplidar_ros', 'rc': 0}
+[6.126225] (-) EventReactorShutdown: {}
