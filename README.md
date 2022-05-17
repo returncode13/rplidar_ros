@@ -23,8 +23,15 @@ How to run rplidar ros package
 
 ```
 $ ros2 run rplidar_ros rplidar_node  # for RPLIDAR A1/A2
-$ rviz2
+$ ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0  world laser_frame  # this is to transform fixed frame to laser .
 ```
+
+Run rviz2
+```
+$ rviz2    # change Fixed Frame option from fixed_frame to laser_frame and add LaserScan
+
+```
+
 
 RPLidar frame
 =====================================================================
